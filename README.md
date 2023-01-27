@@ -1,3 +1,7 @@
-# adminBackendCursoAngular
-Repo de curso angular avanzado (Backend)
-Ejecutar comando npm i
+# AdminPro - Backend
+
+Recuerden ejecutar 
+
+```
+npm install
+```
