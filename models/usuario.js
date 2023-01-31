@@ -26,10 +26,14 @@ const usuarioShema = Schema({
         type: Boolean,
         default: false
     },
+    activo: {
+        type: Boolean,
+        default: true
+    },
 });
 
 usuarioShema.method('toJSON', function() {
-    const { __v, _id, ...object } = this.toObject();
+    const { __v, _id, password, ...object } = this.toObject();
 
     object.Oid = _id;
 
