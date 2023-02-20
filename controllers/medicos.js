@@ -1,32 +1,28 @@
 const { response } = require('express');
 const bcrytjs = require('bcryptjs');
 const { generarJWT } = require('../helper/jwt');
-const Hospital = require('../models/hospital');
+const Medicos = require('../models/Medicos');
 
-const getHospital = async(req, res = response) => {
+const getMedicos = async(req, res = response) => {
     res.json({
         ok: true,
-        msj: 'get Hospitales'
+        msj: 'get Medicos'
     });
 }
 
-const crearHospital = async(req, res = response) => {
+const crearMedicos = async(req, res = response) => {
 
     const oid = req.Oid;
-    const hospital = new Hospital({
+    const medicos = new Medicos({
         usuario: oid,
         ...req.body
     });
-
     try {
-
-        const hospitalDB = await hospital.save();
-
+        const medicosDB = await medicos.save();
         res.json({
             ok: true,
-            msj: hospitalDB
+            msj: medicosDB
         });
-
     } catch (error) {
         console.log(error);
 
@@ -38,25 +34,25 @@ const crearHospital = async(req, res = response) => {
 
 }
 
-const updateHospital = async(req, res = response) => {
+const updateMedicos = async(req, res = response) => {
     res.json({
         ok: true,
-        msj: 'update Hospitales'
+        msj: 'update Medicos'
     });
 }
 
-const dateleHospital = async(req, res = response) => {
+const dateleMedicos = async(req, res = response) => {
     res.json({
         ok: true,
-        msj: 'delete Hospitales'
+        msj: 'delete Medicos'
     });
 
 }
 
 module.exports = {
-    getHospital,
-    crearHospital,
-    updateHospital,
-    dateleHospital,
+    getMedicos,
+    crearMedicos,
+    updateMedicos,
+    dateleMedicos,
 
 }
