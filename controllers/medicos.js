@@ -1,12 +1,18 @@
 const { response } = require('express');
 const bcrytjs = require('bcryptjs');
 const { generarJWT } = require('../helper/jwt');
-const Medicos = require('../models/Medicos');
+const Medicos = require('../models/medicos');
 
 const getMedicos = async(req, res = response) => {
+
+    const medicos = await Medicos.find({})
+        .find({ "activo": true })
+        .populate('usuario', '_id nombre img')
+        .populate('hospital', '_id nombre img');
+
     res.json({
         ok: true,
-        msj: 'get Medicos'
+        medicos
     });
 }
 
