@@ -33,9 +33,6 @@ const getBusquedaSeccion = async(req, res = response) => {
 
     const regX = new RegExp(param, 'i')
     let data = [];
-
-
-    console.log(seccion, data)
     switch (seccion) {
         case 'usuario':
             data = await Usuario.find({ nombre: regX, "activo": true });
@@ -55,9 +52,6 @@ const getBusquedaSeccion = async(req, res = response) => {
                 msg: 'No se encontro la seccion'
             });
     }
-
-    console.log(data)
-
     res.json({
         ok: true,
         param: param,
